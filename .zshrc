@@ -26,3 +26,19 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen theme robbyrussell
 
 antigen apply
+
+# My Custom Prompt
+function format_git_branch() {
+	DIR_BRANCH="$(current_branch)"
+	if [ -n "$DIR_BRANCH" ]
+	then
+		echo " (%F{002}$(current_branch)%f)"
+	fi
+}
+
+PROMPT='%F{011}%n%f@%F{006}%M%f %F{010}%2d%f$(format_git_branch): '
+
+# NVM
+export NVM_DIR="$HOME/.config.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads NVM
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads bash completion
